@@ -1,16 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+:root {
+    --yellow: #ffee32;
+    --yellowHover: #E0CE00;
+    --yellowActive: #CCBB00;
+    --white: #ffff;
+    --black: #000000d9;
+    --blackPiano: #0000004d;
+    --blackInBlack: #000;
+    --gray: #a0a0a0;
+}
+
 * {
     margin: 0;
     padding: 0;
     font-size: 14;
     box-sizing: border-box;
     overflow-x: hidden;
+    font-family: "Poppins";
 }
 
 #header {
     width: 100vw;
     height: 70px;
-    background-color: #000;
-    color: #fff;
+    background-color: var(--black);
+    color: var(--white);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,24 +35,31 @@
 }
 
 .button-add {
-    background-color: #ffee32;
+    background-color: var(--yellow);
     padding: 10px;
-    color: #000;
-    border: 2px solid #666;
-    border-radius: 12px;
+    color: var(--blackInBlack);
+    border: 2px solid var(--gray);
+    border-radius: 6px;
     position: absolute;
     top: 15px;
     right: 15px;
     transition: all 0.6s;
+    cursor: pointer;
+    outline: none;
 }
 
 .button-add:hover {
-    cursor: pointer;
-    background-color: #ffee32d1;
+    background-color: var(--yellowHover);
+    color: var(--white);
+}
+
+.button-add:active {
+    background-color: var(--yellowActive);
+    color: var(--white);
 }
 
 .section-table {
-    color: #000;
+    color: var(--white);
     width: 80%;
     margin: 0 auto;
     padding: 20px;
@@ -48,31 +68,34 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    background-color: #ffee32;
-    opacity: 0.97;
+    background-color: var(--yellow);
+    opacity: 0.94;
+    border-radius: 6px;
 }
 
 .table {
-    background-color: #a0a0a0;
+    background-color: var(--blackPiano);
     width: 100%;
     margin: 0 auto;
-    margin-top: 20px;
-    padding: 0 5px 5px 5px;
+    border-radius: 6px;
 }
 
-.table-primary {
-    background-color: #a0a0a0;
+.table-header>tr>th {
+    font-weight: 500;
 }
 
-.table-secondary {
-    background-color: #fff;
-    color: #a0a0a0;
+.title {
+    color: var(--black);
+    margin-bottom: 20px;
+    text-align: left;
+    text-align: center;
 }
 
 .table-row {
     background-color: #fff;
     color: #000;
     color: #a0a0a0;
+    color: white;
     transition: all 0.6s;
 }
 
@@ -88,17 +111,18 @@
 
 .table-buttons>button {
     width: 100%;
-    color: #a0a0a0;
+    color: white;
     padding: 10px;
     border: none;
-    background-color: #fff;
+    background-color: transparent;
     transition: all linear 0.6s;
+    outline: none;
 }
 
 .table-buttons>button:hover {
     color: #fff;
     cursor: pointer;
-    background-color: #a0a0a0;
+    background-color: #00000090;
     /* padding: 10px; */
     /* border: none; */
 }
@@ -140,8 +164,6 @@
     font-size: 1rem;
 }
 
-
-
 .modal-close {
     position: absolute;
     right: 0;
@@ -178,10 +200,10 @@
 }
 
 .modal-field:focus {
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--gray);
+    /* border: 2px solid red; */
     box-shadow: 0 0 3px var(--primary-color);
 }
-
 
 .modal-footer {
     background-color: inherit;
@@ -195,17 +217,14 @@
         top: 100%;
         transition: all 1s ease;
     }
-
     .modal.active {
         top: 0;
     }
-
     .modal-content {
         margin: 0;
         width: 100%;
         position: fixed;
     }
-
     .modal-field {
         width: 100%;
     }
@@ -213,19 +232,29 @@
 
 .red {
     position: relative;
-    background-color: #ff0000;
+    background-color: var(--white);
+}
+
+.red:hover {
+    color: white;
+    background-color: red;
 }
 
 .green {
     position: relative;
+    background-color: var(--white);
+}
+
+.green:hover {
+    color: white;
+    background-color: greenyellow;
 }
 
 .caneco {
     background-image: url("https://uploaddeimagens.com.br/images/003/833/077/full/321_508114737-removebg-preview.png?1650248573");
     background-repeat: no-repeat;
-    background-position: center 120px;
-    background-size: 500px;
+    background-position: center center;
+    background-size: 700px;
     height: 90vh;
     width: 100vw;
-
 }

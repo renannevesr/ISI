@@ -1,5 +1,3 @@
-'use strict'
-
 const openModal = () => document.getElementById('modal')
     .classList.add('active')
 
@@ -9,7 +7,7 @@ const closeModal = () => {
 }
 
 
-const getLocalStorage = () => JSON.parse(localStorage.getItem('db_client')) ?? []
+const getLocalStorage = () => JSON.parse(localStorage.getItem('db_client')) || []
 const setLocalStorage = (dbClient) => localStorage.setItem("db_client", JSON.stringify(dbClient))
 
 // CRUD - create read update delete
@@ -50,8 +48,8 @@ const saveClient = () => {
         const client = {
             nome: document.getElementById('nome').value,
             email: document.getElementById('email').value,
-            celular: document.getElementById('celular').value,
-            cidade: document.getElementById('cidade').value
+            id: document.getElementById('id').value,
+            fornecedor: document.getElementById('fornecedor').value
         }
         const index = document.getElementById('nome').dataset.index
         if (index == 'new') {
@@ -69,10 +67,10 @@ const saveClient = () => {
 const createRow = (client, index) => {
     const newRow = document.createElement('tr')
     newRow.innerHTML = `
+        <td>${client.id}</td>
         <td>${client.nome}</td>
+        <td>${client.fornecedor}</td>
         <td>${client.email}</td>
-        <td>${client.celular}</td>
-        <td>${client.cidade}</td>
         <td class="table-buttons">
             <button type="button"  id="edit-${index}"><i class="fas fa-pen" id="edit-${index}"></i></button>
             <button type="button"  id="delete-${index}" ><i class="fas fa-trash" id="delete-${index}"></i></button>
@@ -95,8 +93,8 @@ const updateTable = () => {
 const fillFields = (client) => {
     document.getElementById('nome').value = client.nome
     document.getElementById('email').value = client.email
-    document.getElementById('celular').value = client.celular
-    document.getElementById('cidade').value = client.cidade
+    document.getElementById('id').value = client.id
+    document.getElementById('fornecedor').value = client.fornecedor
     document.getElementById('nome').dataset.index = client.index
 }
 

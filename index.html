@@ -7,25 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>a Budega do seu Caneco</title>
+    <title>Bem vindo - Seu Caneco</title>
 </head>
 
 <body>
     <header id="header">
-        <h1>CRUD</h1>
-        <span>Aula - ISI</span>
+        <h1>SEU CANECO</h1>
+        <span>Tradição desde ontem</span>
     </header>
     <button id="cadastrarCliente" class="button-add">Inserir cadastro</button>
     <main class="caneco">
         <section class="section-table">
-            <h2>Alunos Cadastrados</h2>
+            <h2 class="title">Produtos</h2>
             <table class="table" id="tableClient">
-                <thead>
-                    <tr class="table-header">
-                        <th>Produto</th>
-                        <th>email representante</th>
+                <thead class="table-header">
+                    <tr>
                         <th>ID</th>
-                        <th>Filial</th>
+                        <th>Nome</th>
+                        <th>Fornecedor</th>
+                        <th>Email representante</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,15 +36,14 @@
     <div class="modal" id="modal">
         <div class="modal-content">
             <header class="modal-header">
-                <h2>Novo Cliente</h2>
+                <h2>Novo produto</h2>
                 <span class="modal-close" id="modalClose">&#10006;</span>
             </header>
             <form id="form" class="modal-form">
-                <input type="text" id="nome" data-index="new" class="modal-field" placeholder="Nome do Cliente"
-                    required>
-                <input type="email" id="email" class="modal-field" placeholder="e-mail do Cliente" required>
-                <input type="text" id="celular" class="modal-field" placeholder="Celular do Cliente" required>
-                <input type="text" id="cidade" class="modal-field" placeholder="Cidade do Cliente" required>
+                <input type="text" id="nome" data-index="new" class="modal-field" placeholder="Nome do Produto" required>
+                <input type="email" id="email" class="modal-field" placeholder="E-mail do Fornecedor" required>
+                <input type="text" id="id" class="modal-field" placeholder="Id do Produto" required>
+                <input type="text" id="fornecedor" class="modal-field" placeholder="Fornecedor do Produto" required>
             </form>
             <footer class="modal-footer">
                 <button id="salvar" class="button-add green">Salvar</button>
