@@ -10,7 +10,6 @@ const closeModal = () => {
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_client')) || []
 const setLocalStorage = (dbClient) => localStorage.setItem("db_client", JSON.stringify(dbClient))
 
-// CRUD - create read update delete
 const deleteClient = (index) => {
     const dbClient = readClient()
     dbClient.splice(index, 1)
@@ -34,8 +33,6 @@ const createClient = (client) => {
 const isValidFields = () => {
     return document.getElementById('form').reportValidity()
 }
-
-//Interação com o layout
 
 const clearFields = () => {
     const fields = document.querySelectorAll('.modal-field')
@@ -76,11 +73,11 @@ const createRow = (client, index) => {
             <button type="button"  id="delete-${index}" ><i class="fas fa-trash" id="delete-${index}"></i></button>
         </td>
     `
-    document.querySelector('#tableClient>tbody').appendChild(newRow)
+    document.querySelector('#tableProduct>tbody').appendChild(newRow)
 }
 
 const clearTable = () => {
-    const rows = document.querySelectorAll('#tableClient>tbody tr')
+    const rows = document.querySelectorAll('#tableProduct>tbody tr')
     rows.forEach(row => row.parentNode.removeChild(row))
 }
 
@@ -125,7 +122,6 @@ const editDelete = (event) => {
 
 updateTable()
 
-// Eventos
 document.getElementById('cadastrarCliente')
     .addEventListener('click', openModal)
 
@@ -135,7 +131,7 @@ document.getElementById('modalClose')
 document.getElementById('salvar')
     .addEventListener('click', saveClient)
 
-document.querySelector('#tableClient>tbody')
+document.querySelector('#tableProduct>tbody')
     .addEventListener('click', editDelete)
 
 document.getElementById('cancelar')
