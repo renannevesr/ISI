@@ -62,7 +62,7 @@
 }
 
 .section-table {
-    color: var(--white);
+    color: var(--blackInBlack);
     width: 80%;
     margin: 0 auto;
     padding: 20px;
@@ -113,6 +113,7 @@
 }
 
 .table-buttons>button {
+    color: var(--blackInBlack) !important;
     width: 100%;
     color: var(--white);
     padding: 10px;
@@ -123,7 +124,7 @@
 }
 
 .table-buttons>button:hover {
-    color: var(--white);
+    color: var(--white) !important;
     cursor: pointer;
     background-color: var(--blackInBlackPiano);
 }
