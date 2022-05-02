@@ -5,11 +5,21 @@ const closeModal = () => {
     document.getElementById('modal').classList.remove('active')
 }
 
+const getData = () => {
+    fetch('http://127.0.0.1:3333/products', {
+            method: "GET",
+            headers: { "Content-type": "application/json;charset=UTF-8" }
+        })
+        .then(response => response.json())
+        .then(json => json.forEach(createRow))
+        .catch(err => console.log(err));
+}
 
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_produto')) || []
 const setLocalStorage = (dbproduto) => localStorage.setItem("db_produto", JSON.stringify(dbproduto))
 
 const deleteproduto = (index) => {
+    console.log(index);
     const dbproduto = readproduto()
     dbproduto.splice(index, 1)
     setLocalStorage(dbproduto)
@@ -24,6 +34,16 @@ const updateproduto = (index, produto) => {
 const readproduto = () => getLocalStorage()
 
 const createproduto = (produto) => {
+
+    fetch('http://127.0.0.1:3333/products', {
+            method: "POST",
+            body: JSON.stringify(produto),
+            headers: { "Content-type": "application/json; charset=UTF-8" }
+        })
+        .then(response => response.json())
+        .then(json => console.log(json))
+        .catch(err => console.log(err));
+
     const dbproduto = getLocalStorage()
     dbproduto.push(produto)
     setLocalStorage(dbproduto)
@@ -43,9 +63,9 @@ const saveproduto = () => {
     if (isValidFields()) {
         const produto = {
             nome: document.getElementById('nome').value,
-            email: document.getElementById('email').value,
-            id: document.getElementById('id').value,
-            fornecedor: document.getElementById('fornecedor').value
+            email_fornecedor: document.getElementById('email').value,
+            codigo: document.getElementById('id').value,
+            nome_fornecedor: document.getElementById('fornecedor').value
         }
         const index = document.getElementById('nome').dataset.index
         if (index == 'new') {
@@ -63,10 +83,10 @@ const saveproduto = () => {
 const createRow = (produto, index) => {
     const newRow = document.createElement('tr')
     newRow.innerHTML = `
-        <td>${produto.id}</td>
+        <td>${produto.codigo}</td>
         <td>${produto.nome}</td>
-        <td>${produto.fornecedor}</td>
-        <td>${produto.email}</td>
+        <td>${produto.nome_fornecedor}</td>
+        <td>${produto.email_fornecedor}</td>
         <td class="table-buttons">
             <button type="button"  id="edit-${index}"><i class="fas fa-pen" id="edit-${index}"></i></button>
             <button type="button"  id="delete-${index}" ><i class="fas fa-trash" id="delete-${index}"></i></button>
@@ -81,16 +101,17 @@ const clearTable = () => {
 }
 
 const updateTable = () => {
-    const dbproduto = readproduto()
+    const dbproduto = getData()
+        // const dbproduto = readproduto()
     clearTable()
-    dbproduto.forEach(createRow)
+        // dbproduto.forEach(createRow)
 }
 
 const fillFields = (produto) => {
     document.getElementById('nome').value = produto.nome
-    document.getElementById('email').value = produto.email
-    document.getElementById('id').value = produto.id
-    document.getElementById('fornecedor').value = produto.fornecedor
+    document.getElementById('email').value = produto.email_fornecedor
+    document.getElementById('id').value = produto.codigo
+    document.getElementById('fornecedor').value = produto.nome_fornecedor
     document.getElementById('nome').dataset.index = produto.index
 }
 
