@@ -72,10 +72,12 @@ const saveproduto = () => {
             createproduto(produto)
             updateTable()
             closeModal()
+            document.location.reload(true)
         } else {
             updateproduto(index, produto)
             updateTable()
             closeModal()
+            document.location.reload(true)
         }
     }
 }
@@ -83,6 +85,7 @@ const saveproduto = () => {
 const createRow = (produto, index) => {
     const newRow = document.createElement('tr')
     newRow.innerHTML = `
+        <td>${produto.id}</td>
         <td>${produto.codigo}</td>
         <td>${produto.nome}</td>
         <td>${produto.nome_fornecedor}</td>
